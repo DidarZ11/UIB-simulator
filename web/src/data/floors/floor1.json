@@ -1,0 +1,150 @@
+{
+  "id": "floor1",
+  "name": "1 этаж",
+  "ceilingHeight": 3.0,
+  "wainscotHeight": 1.1,
+  "wallThickness": 0.2,
+  "spawn": { "x": 5.5, "y": 4.5, "yaw": 0 },
+
+  "zones": [
+    { "name": "Тамбур — главный вход", "rect": [8.6, -1.7, 3.4, 3.0] },
+    { "name": "Холл", "rect": [0, 0, 12, 13] },
+    { "name": "Лестница", "rect": [3.2, 13, 3.4, 5] },
+    { "name": "Восточный коридор — кабинеты", "rect": [8.6, 13, 3.4, 9] },
+    { "name": "Западный проход — спортзал", "rect": [-8, 10.4, 8, 2.2] }
+  ],
+
+  "floors": [
+    { "rect": [0, 1.3, 12, 11.7] },
+    { "rect": [0, 0, 8.6, 1.3] },
+    { "rect": [8.6, -1.7, 3.4, 3.0] },
+    { "rect": [8.6, 13, 3.4, 9] },
+    { "rect": [12, 1.3, 3, 3.5] },
+    { "rect": [-8, 10.4, 8, 2.2] },
+    { "rect": [3.2, 13, 3.4, 5], "material": "granite" }
+  ],
+
+  "accentTiles": [
+    [1.8, 1.2, 1.2, 0.6],
+    [3.0, 3.0, 1.2, 1.2],
+    [4.2, 4.2, 1.2, 1.2],
+    [3.0, 5.4, 1.8, 0.6],
+    [4.8, 6.0, 1.2, 1.8],
+    [5.4, 8.4, 1.2, 1.2],
+    [4.8, 10.8, 0.6, 1.2],
+    [9.6, 5.4, 0.6, 0.6],
+    [10.2, 9.0, 0.6, 0.6],
+    [9.6, 15.0, 0.6, 0.6],
+    [10.2, 19.2, 0.6, 0.6],
+    [-3.0, 11.4, 0.6, 0.6]
+  ],
+
+  "walls": [
+    {
+      "id": "hall-west",
+      "from": [0, 0], "to": [0, 13],
+      "openings": [
+        { "kind": "window", "at": 1.5, "width": 1.2, "sill": 0.9, "top": 2.3 },
+        { "kind": "passage", "at": 10.4, "width": 2.2 }
+      ]
+    },
+    {
+      "id": "hall-south",
+      "from": [0, 0], "to": [7.4, 0],
+      "openings": [
+        { "kind": "window", "at": 3.9, "width": 2.8, "sill": 0.9, "top": 2.4 }
+      ]
+    },
+    {
+      "id": "entrance-partition",
+      "from": [8.6, 1.3], "to": [12, 1.3],
+      "style": "glass",
+      "openings": [
+        { "kind": "passage", "at": 1.1, "width": 1.2, "top": 2.1 }
+      ]
+    },
+    { "id": "vestibule-west", "from": [8.6, -1.7], "to": [8.6, 0] },
+    {
+      "id": "entrance-outer",
+      "from": [8.6, -1.7], "to": [12, -1.7],
+      "style": "glass",
+      "openings": [
+        { "kind": "door", "at": 1.1, "width": 1.2, "top": 2.1 }
+      ]
+    },
+    {
+      "id": "east",
+      "from": [12, -1.7], "to": [12, 22],
+      "openings": [
+        { "kind": "window", "at": 3.3, "width": 1.8, "sill": 1.1, "top": 2.2 },
+        { "kind": "door", "at": 5.3, "width": 0.9, "top": 2.1 },
+        { "kind": "door", "at": 18.7, "width": 0.9, "top": 2.1 }
+      ]
+    },
+    { "id": "booth-south", "from": [12, 1.3], "to": [15, 1.3] },
+    { "id": "booth-north", "from": [12, 4.8], "to": [15, 4.8] },
+    { "id": "booth-east", "from": [15, 1.3], "to": [15, 4.8] },
+    { "id": "hall-north-mirror", "from": [0, 13], "to": [3.2, 13] },
+    { "id": "hall-north-tv", "from": [6.6, 13], "to": [8.6, 13] },
+    { "id": "stairs-west", "from": [3.2, 13], "to": [3.2, 18] },
+    { "id": "stairs-east", "from": [6.6, 13], "to": [6.6, 18] },
+    { "id": "stairs-north", "from": [3.2, 18], "to": [6.6, 18] },
+    {
+      "id": "east-corridor-west",
+      "from": [8.6, 13], "to": [8.6, 22],
+      "openings": [
+        { "kind": "door", "at": 5.5, "width": 0.9, "top": 2.1 }
+      ]
+    },
+    { "id": "east-corridor-end", "from": [8.6, 22], "to": [12, 22] },
+    {
+      "id": "west-passage-south",
+      "from": [-8, 10.4], "to": [0, 10.4],
+      "openings": [
+        { "kind": "door", "at": 1.5, "width": 0.9, "top": 2.1 },
+        { "kind": "door", "at": 5.0, "width": 0.9, "top": 2.1 }
+      ]
+    },
+    { "id": "west-passage-north", "from": [-8, 12.6], "to": [0, 12.6] },
+    {
+      "id": "west-passage-end",
+      "from": [-8, 10.4], "to": [-8, 12.6],
+      "openings": [
+        { "kind": "door", "at": 0.4, "width": 1.4, "top": 2.1 }
+      ]
+    }
+  ],
+
+  "pillars": [
+    { "id": "entrance-pillar", "at": [8.0, 0.65], "size": [1.2, 1.3] },
+    { "id": "accreditations-pillar", "at": [8.0, 5.4], "size": [1.2, 2.0] },
+    { "id": "second-pillar", "at": [8.0, 10.0], "size": [1.2, 2.0] }
+  ],
+
+  "murals": [
+    { "kind": "mission", "at": [0, 6.8], "facing": "E", "width": 6.8, "bottom": 1.15, "height": 1.7 },
+    { "kind": "timeline", "at": [12, 10.8], "facing": "W", "width": 11.6, "bottom": 1.2, "height": 1.1 },
+    { "kind": "accreditations", "at": [7.4, 5.4], "facing": "W", "width": 1.8, "bottom": 1.15, "height": 1.8, "offset": 0.01 }
+  ],
+
+  "signs": [
+    { "text": "ВЫХОД", "at": [10.3, 1.3], "facing": "N", "width": 0.9, "bottom": 2.2, "height": 0.25, "bg": "#1f7a3d", "fg": "#ffffff" },
+    { "text": "ВАХТА", "at": [12, 2.5], "facing": "W", "width": 0.9, "bottom": 2.3, "height": 0.25, "bg": "#1f7a3d", "fg": "#ffffff" },
+    { "text": "СПОРТЗАЛ", "at": [-8, 11.5], "facing": "E", "width": 1.3, "bottom": 2.25, "height": 0.28, "bg": "#1f7a3d", "fg": "#ffffff" },
+    { "text": "2 ЭТАЖ — СКОРО", "at": [5.75, 14.6], "facing": "S", "width": 1.6, "bottom": 2.3, "height": 0.3, "bg": "#222222", "fg": "#ffd54a", "offset": 0 }
+  ],
+
+  "props": [
+    { "type": "banner", "at": [1.2, 0.5], "facing": "N", "color": "#d94b3d" },
+    { "type": "banner", "at": [2.4, 0.5], "facing": "N", "color": "#b6d433" },
+    { "type": "mirror", "at": [1.7, 13], "facing": "S", "width": 2.4, "bottom": 0.35, "height": 2.2 },
+    { "type": "tv", "at": [7.6, 13], "facing": "S", "width": 1.2, "bottom": 1.9, "height": 0.7 },
+    { "type": "photoFrame", "at": [7.9, 12.3], "facing": "S" }
+  ],
+
+  "stairs": {
+    "x": 4.9, "y": 14.6, "width": 1.7,
+    "steps": 10, "stepDepth": 0.3, "stepHeight": 0.16,
+    "barrier": { "from": [3.2, 14.6], "to": [6.6, 14.6] }
+  }
+}

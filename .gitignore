@@ -1,0 +1,10 @@
+# Blender autosaves and backups
+*.blend1
+*.blend2
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Photos of people, keep on shared Drive
+Фото холл/
