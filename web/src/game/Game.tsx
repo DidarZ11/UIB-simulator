@@ -1,9 +1,12 @@
 "use client";
 
-import { Suspense, useEffect, useMemo, useState } from "react";
+import { Suspense, useMemo, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import floor1 from "@/data/floors/floor1.json";
 import { ru } from "@/i18n/ru";
+import { AvatarPanel } from "./AvatarPanel";
+import { DEFAULT_AVATAR, loadAvatar, saveAvatar, type AvatarColors } from "./avatar";
+import { EmoteWheel } from "./EmoteWheel";
 import { FloorScene } from "./FloorScene";
 import { HallModel } from "./HallModel";
 import { Player } from "./Player";
@@ -28,10 +31,17 @@ export function Game() {
   const geometry = useMemo(() => buildFloorGeometry(data), []);
   const [zone, setZone] = useState<string | null>(null);
   // `?model=hall` swaps the code-built floor for the Blender hall (public/models/hall.glb).
-  const [blenderHall, setBlenderHall] = useState(false);
-  useEffect(() => {
-    setBlenderHall(new URLSearchParams(window.location.search).get("model") === "hall");
-  }, []);
+  // Read on the client only; the server render shows neither (the canvas is empty there and the panel starts closed).
+  const [blenderHall] = useState(
+    () => typeof window !== "undefined" && new URLSearchParams(window.location.search).get("model") === "hall",
+  );
+  const [colors, setColors] = useState<AvatarColors>(() =>
+    typeof window !== "undefined" ? loadAvatar() : DEFAULT_AVATAR,
+  );
+  const changeColors = (c: AvatarColors) => {
+    setColors(c);
+    saveAvatar(c);
+  };
 
   return (
     <div className="fixed inset-0 bg-[#cfe3f1]">
@@ -47,17 +57,21 @@ export function Game() {
         ) : (
           <FloorScene data={data} geometry={geometry} />
         )}
-        <Player data={data} colliders={geometry.colliders} onZoneChange={setZone} />
+        <Player data={data} colliders={geometry.colliders} colors={colors} onZoneChange={setZone} />
       </Canvas>
 
+      <EmoteWheel />
+      <AvatarPanel colors={colors} onChange={changeColors} />
       <div className="pointer-events-none absolute left-4 top-4 rounded-lg bg-black/60 px-4 py-2 text-white">
         <div className="text-xs uppercase tracking-wide text-white/70">{data.name}</div>
         <div className="text-lg font-semibold">{zone ?? ru.unknownZone}</div>
+        <div className="text-xs text-white/60">{blenderHall ? ru.hallSource.blender : ru.hallSource.code}</div>
       </div>
       <div className="pointer-events-none absolute bottom-4 left-4 rounded-lg bg-black/60 px-4 py-2 text-sm text-white/90">
         <div>{ru.controls.move}</div>
         <div>{ru.controls.look}</div>
         <div>{ru.controls.zoom}</div>
+        <div>{ru.controls.emotes}</div>
       </div>
     </div>
   );
